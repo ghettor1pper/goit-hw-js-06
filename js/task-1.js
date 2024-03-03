@@ -1,8 +1,8 @@
 class Customer {
-  constructor(username, balance, discount, orders) {
+  constructor(username, balance, discountRate, orders) {
     this.username = username;
     this.balance = balance;
-    this.discount = discount;
+    this.discountRate = discountRate;
     this.orders = orders;
   }
 
@@ -10,12 +10,12 @@ class Customer {
     return this.balance;
   }
 
-  getDiscount() {
-    return this.discount;
+  getDiscountRate() {
+    return this.discountRate;
   }
 
-  setDiscount(value) {
-    this.discount = value;
+  setDiscountRate(value) {
+    this.discountRate = value;
   }
 
   getOrders() {
@@ -23,15 +23,15 @@ class Customer {
   }
 
   addOrder(cost, order) {
-    this.balance -= cost - cost * this.discount;
+    this.balance -= cost - cost * this.discountRate;
     this.orders.push(order);
   }
 }
 
 const customer = new Customer("Mango", 24000, 0.1, ["Burger", "Pizza", "Salad"]);
 
-customer.setDiscount(0.15);
-console.log(customer.getDiscount()); // 0.15
+customer.setDiscountRate(0.15);
+console.log(customer.getDiscountRate()); // 0.15
 
 customer.addOrder(5000, "Steak");
 console.log(customer.getBalance()); // 19750
